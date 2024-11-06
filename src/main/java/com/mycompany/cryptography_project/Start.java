@@ -13,5 +13,6 @@ public class Start {
     public static void main(String[] args) {
         Encryption ui = new Encryption();
         ui.setVisible(true);
+        System.out.println("");
     }
 }
