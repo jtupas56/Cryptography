@@ -8,9 +8,10 @@ package com.mycompany.cryptography_project;
  *
  * @author joshuatupas
  */
-public class Cryptography_Project {
+public class Start {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Encryption ui = new Encryption();
+        ui.setVisible(true);
     }
 }
