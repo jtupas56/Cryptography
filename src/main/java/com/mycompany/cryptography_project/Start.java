@@ -11,9 +11,8 @@ package com.mycompany.cryptography_project;
 public class Start {
 
     public static void main(String[] args) {
-        Encryption ui = new Encryption();
+        //Start the gui app
+        Login ui = new Login();
         ui.setVisible(true);
-        System.out.println("");
-        System.out.println("Joshua test");
     }
 }

@@ -8,7 +8,6 @@ package com.mycompany.cryptography_project;
  *
  * @author domas
  */
-public class records
-{
+public class records{
     
 }
