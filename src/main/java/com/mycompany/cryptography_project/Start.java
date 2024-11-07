@@ -14,5 +14,6 @@ public class Start {
         Encryption ui = new Encryption();
         ui.setVisible(true);
         System.out.println("");
+        System.out.println("Adam test");
     }
 }
