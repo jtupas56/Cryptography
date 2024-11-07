@@ -15,5 +15,6 @@ public class Start {
         ui.setVisible(true);
         System.out.println("");
         System.out.println("Adam test");
+        System.out.println("Aaron test");
     }
 }
