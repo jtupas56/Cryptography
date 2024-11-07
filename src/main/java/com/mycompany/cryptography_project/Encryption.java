@@ -4,6 +4,8 @@
  */
 package com.mycompany.cryptography_project;
 
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,13 +14,20 @@ import javax.swing.JOptionPane;
  */
 public class Encryption extends javax.swing.JFrame {
 
-    private static final int SHIFT = 3;
+
 
     /**
      * Creates new form Encryption
      */
     public Encryption() {
         initComponents();
+    }
+
+    public static SecretKey generateKey(int n) throws Exception {
+        KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+        keyGenerator.init(n);
+        SecretKey key = keyGenerator.generateKey();
+        return key;
     }
 
     /**
@@ -142,7 +151,5 @@ public class Encryption extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     public static javax.swing.JTextField keyTF;
     // End of variables declaration//GEN-END:variables
-
-
 
 }
