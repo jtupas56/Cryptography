@@ -1,5 +1,6 @@
 package com.mycompany.cryptography_project.Records;
 
+import java.nio.charset.StandardCharsets;
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -11,21 +12,22 @@ import java.util.Base64;
 
 import javax.crypto.Cipher;
 
-public class RSAEncryption {
+public class RSAEncryption
+{
 
     private static PublicKey publicKey = null;
     private static PrivateKey privateKey = null;
     private static Cipher cipher;
     private static boolean decryptionOnly = false;
 
-    public RSAEncryption() throws Exception 
+    public RSAEncryption() throws Exception
     {
         init();
     }
 
-    public RSAEncryption(String key) throws Exception
+    public RSAEncryption(String privateKey) throws Exception
     {
-        setPrivateKey(key);
+        setPrivateKey(privateKey);
         cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
         decryptionOnly = true;
     }
@@ -41,8 +43,8 @@ public class RSAEncryption {
          * System.out.println(decryptedData.get(0).replaceAll("\\?", " "));
          *
     } */
-
-    private void init() throws Exception {
+    private void init() throws Exception
+    {
         KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
 
         // Initializing the key pair generator
@@ -58,7 +60,7 @@ public class RSAEncryption {
         cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
     }
 
-    public byte[] encryptData(String jsonData) throws Exception 
+    public byte[] encryptData(String jsonData) throws Exception
     {
         if (decryptionOnly)
         {
@@ -77,14 +79,13 @@ public class RSAEncryption {
 
         // Initializing the same cipher for decryption
         // cipher.init(Cipher.DECRYPT_MODE, privateKey);
-
         // Decrypting the text
         // byte[] decipheredText = cipher.doFinal(cipherText);
-
         return (cipherText);
     }
 
-    public String decryptData(byte[] encryptedData) throws Exception {
+    public String decryptData(byte[] encryptedData) throws Exception
+    {
 
         // Initializing the same cipher for decryption
         cipher.init(Cipher.DECRYPT_MODE, privateKey);
@@ -94,60 +95,80 @@ public class RSAEncryption {
         return new String(decipheredText);
     }
 
-    public ArrayList<byte[]> encryptList(ArrayList<String> list) throws Exception {
+    public ArrayList<byte[]> encryptList(ArrayList<String> list) throws Exception
+    {
         ArrayList<byte[]> encryptedList = new ArrayList<>();
 
-        for (String value : list) {
+        for (String value : list)
+        {
             encryptedList.add(encryptData(value));
         }
 
         return encryptedList;
     }
 
-    public ArrayList<String> decryptList(ArrayList<byte[]> encryptedList) throws Exception {
+    public ArrayList<String> decryptList(ArrayList<byte[]> encryptedList) throws Exception
+    {
         ArrayList<String> decryptedList = new ArrayList<>();
 
-        for (byte value[] : encryptedList) {
+        for (byte value[] : encryptedList)
+        {
             decryptedList.add(decryptData(value));
         }
 
         return decryptedList;
     }
+    
+    public ArrayList<String> longStringToList(String data)
+    {
+        return longStringToList(data, false);
+    }
 
-    public ArrayList<String> longStringToList(String data) {
+    public ArrayList<String> longStringToList(String data, boolean isEncryptedData)
+    {
+        int maxBytes = 245;
+        
+        if (isEncryptedData)
+        {
+            maxBytes = 256;
+        }
         ArrayList<String> list = new ArrayList<>();
 
         String currentString = "";
         int bytesUsed = 0;
-        for (int charIndex = 0; charIndex < data.length(); charIndex++) {
-            if (bytesUsed == 245) {
+        for (int charIndex = 0; charIndex < data.length(); charIndex++)
+        {
+            if (bytesUsed >= maxBytes)
+            {
                 list.add(currentString);
                 currentString = "";
                 bytesUsed = 0;
             }
 
             currentString += Character.toString(data.charAt(charIndex));
-            bytesUsed++;
+            bytesUsed = currentString.getBytes(StandardCharsets.ISO_8859_1).length;
         }
         list.add(currentString);
         return list;
     }
 
-    public String listToLongString(ArrayList<String> list) {
+    public String listToLongString(ArrayList<String> list)
+    {
         String output = "";
-        for (String value : list) {
+        for (String value : list)
+        {
             output += value;
         }
         return output;
     }
 
-    public String getPrivateKey() 
+    public String getPrivateKey()
     {
         // Encode the private key's bytes to Base64
         return Base64.getEncoder().encodeToString(privateKey.getEncoded());
     }
 
-    private void setPrivateKey(String keyString) throws Exception 
+    private void setPrivateKey(String keyString) throws Exception
     {
         // Decode the Base64 string to get private key bytes
         byte[] keyBytes = Base64.getDecoder().decode(keyString);
@@ -164,10 +185,22 @@ public class RSAEncryption {
 
         for (byte[] value : encryptedList)
         {
-            output += new String(value);
+            output += new String(value, StandardCharsets.ISO_8859_1);
         }
 
         return output;
+    }
+
+    public ArrayList<byte[]> listToByteList(ArrayList<String> list) throws Exception
+    {
+        ArrayList<byte[]> byteList = new ArrayList<>();
+
+        for (String value : list)
+        {
+            byteList.add(value.getBytes(StandardCharsets.ISO_8859_1));
+        }
+
+        return byteList;
     }
 
 }
