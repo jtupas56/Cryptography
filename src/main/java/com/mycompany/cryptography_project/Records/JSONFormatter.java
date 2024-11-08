@@ -1,47 +1,38 @@
 package com.mycompany.cryptography_project.Records;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class JSONFormatter 
 {
+    private static String dir = "src/main/java/com/mycompany/cryptography_project/Records/data/";
     
-    private static void addTableValues() throws IOException
+    public static ArrayList getJSONData() throws IOException
     {
-        String data = FileReadWrite.readFromFile("patient_medical_records.json");
+        String data = FileReadWrite.readFromFile( dir + "patient_medical_records.json");
         data = data.replaceAll("\\[\r\n    \\{\r\n        ", "");
         data = data.replaceAll("\r\n    \\}\r\n\\]\r\n", "");
         data = data.replaceAll("        ", "");
         String rows[] = data.split("\r\n    \\},\r\n    \\{\r\n");
 
-        /* ArrayList<HashMap<String, String>> parsedData = new ArrayList<>();
+        ArrayList<ArrayList<String[]>> parsedData = new ArrayList<>();
 
         for (String row : rows)
         {
-            String details[] = row.split(",\"");
-            HashMap<String, String> map = new HashMap<>();
+            ArrayList<String[]> field = new ArrayList<>();
+            String details[] = row.split(",\r\n\"");
 
             for (String detail : details)
             {
                 detail = detail.replaceAll("\"", "");
                 String keyValues[] = detail.split(": ");
                 
-                map.put(keyValues[0], keyValues[1]);
+                field.add(keyValues);
             }
-            parsedData.add(map);
+            parsedData.add(field);
         }
-        HashMap<String, String> map = parsedData.get(0);
         
-        for (String key : map.keySet())
-        {
-            System.out.println(key + ": " + map.get(key));
-        } */
-
-        //todo
+        return parsedData;
     }
 
     public static void main(String[] args) 
@@ -49,7 +40,7 @@ public class JSONFormatter
         try
         {
 
-            System.out.println(FileReadWrite.readFromFile("patient_medical_records.json"));
+            getJSONData();
             
         }
         catch (IOException e)
