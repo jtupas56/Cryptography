@@ -43,6 +43,7 @@ public class FileIntegrityJT extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         hashTF = new javax.swing.JTextField();
         verifyButton = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         hashrecordsTA = new javax.swing.JTextArea();
@@ -57,7 +58,7 @@ public class FileIntegrityJT extends javax.swing.JFrame {
                 fileButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(fileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
+        jPanel1.add(fileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 97, -1, 40));
 
         fileNameTF.setText("No File Chosen");
         jPanel1.add(fileNameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, -1, -1));
@@ -68,13 +69,13 @@ public class FileIntegrityJT extends javax.swing.JFrame {
                 hashButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(hashButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+        jPanel1.add(hashButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 97, -1, 40));
 
         jLabel1.setText("Hash Value:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
         hashTF.setToolTipText("Copy the hash here");
-        jPanel1.add(hashTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 540, 40));
+        jPanel1.add(hashTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 660, 40));
 
         verifyButton.setText("Verify");
         verifyButton.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +83,20 @@ public class FileIntegrityJT extends javax.swing.JFrame {
                 verifyButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(verifyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
+        jPanel1.add(verifyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 267, -1, 40));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, -1));
 
         jTabbedPane1.addTab("Hash", jPanel1);
 
@@ -95,7 +109,7 @@ public class FileIntegrityJT extends javax.swing.JFrame {
         hashrecordsTA.setText("File:\t\tHash Value:\n\n");
         jScrollPane2.setViewportView(hashrecordsTA);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 630, 180));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 720, 180));
 
         jTabbedPane1.addTab("Hash records", jPanel2);
 
@@ -107,7 +121,7 @@ public class FileIntegrityJT extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
         );
 
         pack();
@@ -234,6 +248,7 @@ public class FileIntegrityJT extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton verifyButton;
