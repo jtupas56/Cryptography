@@ -43,6 +43,9 @@ public class FileIntegrityJT extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         hashTF = new javax.swing.JTextField();
         verifyButton = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        hashrecordsTA = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,11 +86,24 @@ public class FileIntegrityJT extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Hash", jPanel1);
 
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        hashrecordsTA.setEditable(false);
+        hashrecordsTA.setColumns(20);
+        hashrecordsTA.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        hashrecordsTA.setRows(5);
+        hashrecordsTA.setText("File:\t\tHash Value:\n\n");
+        jScrollPane2.setViewportView(hashrecordsTA);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 630, 180));
+
+        jTabbedPane1.addTab("Hash records", jPanel2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,11 +143,18 @@ public class FileIntegrityJT extends javax.swing.JFrame {
                 if (selectedFile != null && selectedFile.exists()) {
                     byte[] encodedHash = messageDigest();
                     String currentHash = bytesToHex(encodedHash);
+                    String existingContent = hashrecordsTA.getText();
 
-                    if (verifyHash.equals(currentHash)) {
-                        JOptionPane.showMessageDialog(rootPane, "The File verification successful");
-                    } else {
-                        JOptionPane.showMessageDialog(rootPane, "The File verification failed");
+                    //to avoid duplicate hash record
+                    if (existingContent.contains(selectedFile.getName())) {
+                        JOptionPane.showMessageDialog(rootPane, "This file has already been verified!");
+                    } else {//add hash record when verification successful
+                        if (verifyHash.equals(currentHash)) {
+                            hashrecordsTA.append(selectedFile.getName() + "\t" + currentHash + "\n");
+                            JOptionPane.showMessageDialog(rootPane, "The File verification successful");
+                        } else {
+                            JOptionPane.showMessageDialog(rootPane, "The File verification failed");
+                        }
                     }
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Please select a file");
@@ -203,12 +226,15 @@ public class FileIntegrityJT extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton fileButton;
-    private javax.swing.JLabel fileNameTF;
-    private javax.swing.JButton hashButton;
+    public static javax.swing.JButton fileButton;
+    public static javax.swing.JLabel fileNameTF;
+    public static javax.swing.JButton hashButton;
     private javax.swing.JTextField hashTF;
+    private javax.swing.JTextArea hashrecordsTA;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton verifyButton;
     // End of variables declaration//GEN-END:variables
