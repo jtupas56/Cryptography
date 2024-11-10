@@ -40,10 +40,9 @@ public class FileIntegrityJT extends javax.swing.JFrame {
         fileButton = new javax.swing.JButton();
         fileNameTF = new javax.swing.JLabel();
         hashButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        hashTA = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        hashTF = new javax.swing.JTextField();
+        verifyButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,45 +67,36 @@ public class FileIntegrityJT extends javax.swing.JFrame {
         });
         jPanel1.add(hashButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
 
-        hashTA.setEditable(false);
-        hashTA.setColumns(20);
-        hashTA.setLineWrap(true);
-        hashTA.setRows(5);
-        jScrollPane1.setViewportView(hashTA);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 270, -1));
-
         jLabel1.setText("Hash Value:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+
+        hashTF.setToolTipText("Copy the hash here");
+        jPanel1.add(hashTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 540, 40));
+
+        verifyButton.setText("Verify");
+        verifyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verifyButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(verifyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
 
         jTabbedPane1.addTab("Hash", jPanel1);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 365, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Verify", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
     //byte to hex converter to get the hashed value
     private static String bytesToHex(byte[] hash) {
         StringBuilder hexString = new StringBuilder(2 * hash.length);
@@ -120,6 +110,49 @@ public class FileIntegrityJT extends javax.swing.JFrame {
         return hexString.toString();
     }
 
+    //MessageDigest class for SHA-256 hashing
+    private byte[] messageDigest() throws Exception {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] fileBytes = Files.readAllBytes(selectedFile.toPath());
+        return digest.digest(fileBytes);
+    }
+
+    private void verifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyButtonActionPerformed
+        try {
+            String verifyHash = hashTF.getText();
+            //if the input is empty otherwise verify when the file and hash matches
+            if (verifyHash.isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Please provide a hash first");
+            } else {
+                if (selectedFile != null && selectedFile.exists()) {
+                    byte[] encodedHash = messageDigest();
+                    String currentHash = bytesToHex(encodedHash);
+
+                    if (verifyHash.equals(currentHash)) {
+                        JOptionPane.showMessageDialog(rootPane, "The File verification successful");
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "The File verification failed");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Please select a file");
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e);
+        }
+    }//GEN-LAST:event_verifyButtonActionPerformed
+
+    private void hashButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hashButtonActionPerformed
+        try {
+            // MessageDigest class for SHA-256
+            byte[] encodedHash = messageDigest();
+            String hashValue = bytesToHex(encodedHash);
+            hashTF.setText(hashValue);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Please select file");
+        }
+    }//GEN-LAST:event_hashButtonActionPerformed
+
     private void fileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileButtonActionPerformed
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Select a File");
@@ -132,19 +165,6 @@ public class FileIntegrityJT extends javax.swing.JFrame {
             fileNameTF.setText(fileName);
         }
     }//GEN-LAST:event_fileButtonActionPerformed
-
-    private void hashButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hashButtonActionPerformed
-        try {
-            // MessageDigest class for SHA-256
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] fileBytes = Files.readAllBytes(selectedFile.toPath());
-            byte[] encodedHash = digest.digest(fileBytes);
-            String hashValue = bytesToHex(encodedHash);
-            hashTA.setText(hashValue);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, "Please select file");
-        }
-    }//GEN-LAST:event_hashButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,14 +203,13 @@ public class FileIntegrityJT extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton fileButton;
-    public static javax.swing.JLabel fileNameTF;
-    public static javax.swing.JButton hashButton;
-    private javax.swing.JTextArea hashTA;
+    private javax.swing.JButton fileButton;
+    private javax.swing.JLabel fileNameTF;
+    private javax.swing.JButton hashButton;
+    private javax.swing.JTextField hashTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton verifyButton;
     // End of variables declaration//GEN-END:variables
 }
