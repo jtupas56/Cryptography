@@ -107,6 +107,7 @@ public class Login extends javax.swing.JFrame {
             //invalid login
             javax.swing.JOptionPane.showMessageDialog(this, "Invalid ID or Password");
         }
+        
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void userIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIDTextFieldActionPerformed
