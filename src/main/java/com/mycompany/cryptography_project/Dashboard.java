@@ -31,18 +31,19 @@ public class Dashboard extends javax.swing.JFrame {
         DomasProjectSectionBtn = new javax.swing.JButton();
         exitToLoginPageBtn = new javax.swing.JButton();
         joshProjectSectionBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        DomasProjectSectionBtn.setText("Domas");
+        DomasProjectSectionBtn.setText("Patients Records");
         DomasProjectSectionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DomasProjectSectionBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(DomasProjectSectionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
+        jPanel1.add(DomasProjectSectionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
 
         exitToLoginPageBtn.setText("Exit to Login Page");
         exitToLoginPageBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -52,13 +53,16 @@ public class Dashboard extends javax.swing.JFrame {
         });
         jPanel1.add(exitToLoginPageBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
 
-        joshProjectSectionBtn.setText("Joshua");
+        joshProjectSectionBtn.setText("File Verification");
         joshProjectSectionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 joshProjectSectionBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(joshProjectSectionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
+        jPanel1.add(joshProjectSectionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+
+        jButton1.setText("Password Management");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, -1, -1));
 
         jTabbedPane1.addTab("Dashboard", jPanel1);
 
@@ -66,7 +70,7 @@ public class Dashboard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,6 +134,7 @@ public class Dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DomasProjectSectionBtn;
     private javax.swing.JButton exitToLoginPageBtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton joshProjectSectionBtn;
