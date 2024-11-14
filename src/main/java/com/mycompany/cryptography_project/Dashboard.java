@@ -62,6 +62,11 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1.add(joshProjectSectionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
         jButton1.setText("Password Management");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, -1, -1));
 
         jTabbedPane1.addTab("Dashboard", jPanel1);
@@ -95,6 +100,11 @@ public class Dashboard extends javax.swing.JFrame {
         this.dispose();
         new FileIntegrityJT().setVisible(true);
     }//GEN-LAST:event_joshProjectSectionBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        new passwordManagerGui().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
