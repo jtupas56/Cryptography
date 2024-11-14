@@ -4,11 +4,17 @@
  */
 package com.mycompany.cryptography_project;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.File;
 import java.nio.file.Files;
 import java.security.MessageDigest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -43,75 +49,118 @@ public class FileIntegrityJT extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         hashTF = new javax.swing.JTextField();
         verifyButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        hashrecordsTA = new javax.swing.JTextArea();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        hashrecordsTable = new javax.swing.JTable();
+        searchButton = new javax.swing.JButton();
+        enterFileName = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(39, 77, 96));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        fileButton.setBackground(new java.awt.Color(107, 163, 190));
+        fileButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         fileButton.setText("Choose File");
         fileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fileButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(fileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 97, -1, 40));
+        jPanel1.add(fileButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 170, 60));
 
+        fileNameTF.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         fileNameTF.setText("No File Chosen");
-        jPanel1.add(fileNameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, -1, -1));
+        jPanel1.add(fileNameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, -1));
 
+        hashButton.setBackground(new java.awt.Color(107, 163, 190));
+        hashButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         hashButton.setText("Calculate Hash");
         hashButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hashButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(hashButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 97, -1, 40));
+        jPanel1.add(hashButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 230, 60));
 
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel1.setText("Hash Value:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
 
         hashTF.setToolTipText("Copy the hash here");
-        jPanel1.add(hashTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 660, 40));
+        jPanel1.add(hashTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 660, 40));
 
-        verifyButton.setText("Verify");
+        verifyButton.setBackground(new java.awt.Color(107, 163, 190));
+        verifyButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        verifyButton.setText("Check File");
         verifyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verifyButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(verifyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 267, -1, 40));
+        jPanel1.add(verifyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 300, -1, 60));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, -1));
+        jLabel2.setBackground(new java.awt.Color(255, 0, 51));
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel2.setText("File Verification");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 150, 40));
 
         jTabbedPane1.addTab("Hash", jPanel1);
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel3.setBackground(new java.awt.Color(39, 77, 96));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        hashrecordsTA.setEditable(false);
-        hashrecordsTA.setColumns(20);
-        hashrecordsTA.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        hashrecordsTA.setRows(5);
-        hashrecordsTA.setText("File:\t\tHash Value:\n\n");
-        jScrollPane2.setViewportView(hashrecordsTA);
+        hashrecordsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 720, 180));
+            },
+            new String [] {
+                "Time", "File", "Hash"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-        jTabbedPane1.addTab("Hash records", jPanel2);
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        hashrecordsTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        jScrollPane1.setViewportView(hashrecordsTable);
+        if (hashrecordsTable.getColumnModel().getColumnCount() > 0) {
+            hashrecordsTable.getColumnModel().getColumn(2).setPreferredWidth(400);
+        }
+
+        jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 812, 278));
+
+        searchButton.setBackground(new java.awt.Color(107, 163, 190));
+        searchButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        searchButton.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/Search.png")); // NOI18N
+        searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+        jPanel3.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, 140, 60));
+        jPanel3.add(enterFileName, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 160, 40));
+
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jLabel3.setText("Search File Name:");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
+
+        jTabbedPane1.addTab("Records", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,31 +170,11 @@ public class FileIntegrityJT extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    //byte to hex converter to get the hashed value
-    private static String bytesToHex(byte[] hash) {
-        StringBuilder hexString = new StringBuilder(2 * hash.length);
-        for (int i = 0; i < hash.length; i++) {
-            String hex = Integer.toHexString(0xff & hash[i]);
-            if (hex.length() == 1) {
-                hexString.append('0');
-            }
-            hexString.append(hex);
-        }
-        return hexString.toString();
-    }
-
-    //MessageDigest class for SHA-256 hashing
-    private byte[] messageDigest() throws Exception {
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        byte[] fileBytes = Files.readAllBytes(selectedFile.toPath());
-        return digest.digest(fileBytes);
-    }
 
     private void verifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyButtonActionPerformed
         try {
@@ -157,14 +186,27 @@ public class FileIntegrityJT extends javax.swing.JFrame {
                 if (selectedFile != null && selectedFile.exists()) {
                     byte[] encodedHash = messageDigest();
                     String currentHash = bytesToHex(encodedHash);
-                    String existingContent = hashrecordsTA.getText();
+                    String timestamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
 
                     //to avoid duplicate hash record
-                    if (existingContent.contains(selectedFile.getName())) {
-                        JOptionPane.showMessageDialog(rootPane, "This file has already been verified!");
+                    DefaultTableModel model = (DefaultTableModel) hashrecordsTable.getModel();
+                    boolean isDuplicate = false;
+                    for (int i = 0; i < model.getRowCount(); i++) {
+                        if (model.getValueAt(i, 2) != null && model.getValueAt(i, 2).equals(currentHash)) {
+                            isDuplicate = true;
+                            break;
+                        }
+                    }
+                    if (isDuplicate) {
+                        JOptionPane.showMessageDialog(rootPane, "This hash has already been verified!");
                     } else {//add hash record when verification successful
                         if (verifyHash.equals(currentHash)) {
-                            hashrecordsTA.append(selectedFile.getName() + "\t" + currentHash + "\n");
+                            DefaultTableModel tableModel = (DefaultTableModel) hashrecordsTable.getModel();
+                            tableModel.addRow(new Object[]{
+                                timestamp,
+                                selectedFile.getName(),
+                                currentHash
+                            });
                             JOptionPane.showMessageDialog(rootPane, "The File verification successful");
                         } else {
                             JOptionPane.showMessageDialog(rootPane, "The File verification failed");
@@ -203,6 +245,42 @@ public class FileIntegrityJT extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_fileButtonActionPerformed
 
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        String searchFile = enterFileName.getText().trim();
+        if (searchFile.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Please enter a file name to search");
+        } else {
+
+            for (int i = 0; i < hashrecordsTable.getRowCount(); i++) {
+                String fileName = hashrecordsTable.getValueAt(i, 1).toString(); // Column 1 is File name
+                if (fileName.equalsIgnoreCase(searchFile)) {
+                    hashrecordsTable.setRowSelectionInterval(i, i); // Highlight the matching row
+                    break;
+                }
+            }
+        }
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    //byte to hex converter to get the hashed value
+    private static String bytesToHex(byte[] hash) {
+        StringBuilder hexString = new StringBuilder(2 * hash.length);
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if (hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    }
+
+    //MessageDigest class for SHA-256 hashing
+    private byte[] messageDigest() throws Exception {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] fileBytes = Files.readAllBytes(selectedFile.toPath());
+        return digest.digest(fileBytes);
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -240,17 +318,20 @@ public class FileIntegrityJT extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton fileButton;
-    public static javax.swing.JLabel fileNameTF;
-    public static javax.swing.JButton hashButton;
+    private javax.swing.JTextField enterFileName;
+    private javax.swing.JButton fileButton;
+    private javax.swing.JLabel fileNameTF;
+    private javax.swing.JButton hashButton;
     private javax.swing.JTextField hashTF;
-    private javax.swing.JTextArea hashrecordsTA;
+    private javax.swing.JTable hashrecordsTable;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton searchButton;
     private javax.swing.JButton verifyButton;
     // End of variables declaration//GEN-END:variables
 }
