@@ -28,19 +28,37 @@ public class Dashboard extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        DomasProjectSectionBtn = new javax.swing.JButton();
+        exitToLoginPageBtn = new javax.swing.JButton();
+        joshProjectSectionBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Joshua");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        DomasProjectSectionBtn.setText("Domas");
+        DomasProjectSectionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                DomasProjectSectionBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+        jPanel1.add(DomasProjectSectionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
+
+        exitToLoginPageBtn.setText("Exit to Login Page");
+        exitToLoginPageBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitToLoginPageBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(exitToLoginPageBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
+
+        joshProjectSectionBtn.setText("Joshua");
+        joshProjectSectionBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                joshProjectSectionBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(joshProjectSectionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
 
         jTabbedPane1.addTab("Dashboard", jPanel1);
 
@@ -58,10 +76,21 @@ public class Dashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void DomasProjectSectionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DomasProjectSectionBtnActionPerformed
+        this.dispose();
+        new records().setVisible(true);
+        //hope this is fine dom -adam
+    }//GEN-LAST:event_DomasProjectSectionBtnActionPerformed
+
+    private void exitToLoginPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitToLoginPageBtnActionPerformed
+        this.dispose();
+        new Login().setVisible(true);
+    }//GEN-LAST:event_exitToLoginPageBtnActionPerformed
+
+    private void joshProjectSectionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joshProjectSectionBtnActionPerformed
         this.dispose();
         new FileIntegrityJT().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_joshProjectSectionBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,8 +128,10 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton DomasProjectSectionBtn;
+    private javax.swing.JButton exitToLoginPageBtn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton joshProjectSectionBtn;
     // End of variables declaration//GEN-END:variables
 }
