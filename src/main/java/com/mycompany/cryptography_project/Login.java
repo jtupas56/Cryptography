@@ -44,6 +44,12 @@ public class Login extends javax.swing.JFrame {
 
         jLabel1.setText("ID:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, -1, -1));
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 150, 40));
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 150, 40));
 
@@ -85,10 +91,27 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
-        new Dashboard().setVisible(true);
+
+        //adams section
+        String id = jTextField1.getText(); //get id from txtfield
+        String password = jTextField3.getText(); //get password from txtfield
         
+        UserDatabase userDatabase = new UserDatabase();
+        
+        //check if login is valid
+        if (userDatabase.validateLogin(id, password)) {
+            //valid login
+            this.dispose();
+            new Dashboard().setVisible(true);
+        } else {
+            //invalid login
+            javax.swing.JOptionPane.showMessageDialog(this, "Invalid ID or Password");
+        } 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
