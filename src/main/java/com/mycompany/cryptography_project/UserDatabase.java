@@ -22,7 +22,7 @@ public class UserDatabase {
         userMap.put(VigenereCipher.encrypt("ADAM123", "KEY"), "321adam");
         userMap.put(VigenereCipher.encrypt("AARON234", "KEY"), "432aaron");
         userMap.put(VigenereCipher.encrypt("DOM345", "KEY"), "543dom");
-        userMap.put(VigenereCipher.encrypt("JOSH456", "KEY"), "654josh");
+        userMap.put(VigenereCipher.encrypt("1", "KEY"), "1");
         userMap.put(VigenereCipher.encrypt("12ADMIN34", "KEY"), "43admin21");
     }
 
