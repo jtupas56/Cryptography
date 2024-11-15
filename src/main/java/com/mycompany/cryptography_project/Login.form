@@ -94,7 +94,7 @@
               <Color blue="be" green="a3" red="6b" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/Add 2.png"/>
+              <Image iconType="3" name="/images/Add 2.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Login"/>
           </Properties>
@@ -113,7 +113,7 @@
               <Color blue="be" green="a3" red="6b" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/back.png"/>
+              <Image iconType="3" name="/images/Logout.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Exit"/>
           </Properties>

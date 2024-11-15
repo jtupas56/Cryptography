@@ -56,7 +56,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(userPasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, -1, -1));
 
         loginBtn.setBackground(new java.awt.Color(107, 163, 190));
-        loginBtn.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/Add 2.png")); // NOI18N
+        loginBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Add 2.png"))); // NOI18N
         loginBtn.setText("Login");
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +66,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, -1));
 
         exitBtn.setBackground(new java.awt.Color(107, 163, 190));
-        exitBtn.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/back.png")); // NOI18N
+        exitBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logout.png"))); // NOI18N
         exitBtn.setText("Exit");
         exitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

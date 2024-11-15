@@ -63,7 +63,7 @@ public class FileIntegrityJT extends javax.swing.JFrame {
 
         fileButton.setBackground(new java.awt.Color(107, 163, 190));
         fileButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        fileButton.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/Purchase.png")); // NOI18N
+        fileButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Purchase.png"))); // NOI18N
         fileButton.setText("Choose File");
         fileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +95,7 @@ public class FileIntegrityJT extends javax.swing.JFrame {
 
         backButton.setBackground(new java.awt.Color(107, 163, 190));
         backButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        backButton.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/back.png")); // NOI18N
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
@@ -110,7 +110,7 @@ public class FileIntegrityJT extends javax.swing.JFrame {
 
         verifyButton.setBackground(new java.awt.Color(107, 163, 190));
         verifyButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        verifyButton.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/Edit.png")); // NOI18N
+        verifyButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Edit.png"))); // NOI18N
         verifyButton.setText("Check File");
         verifyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +157,7 @@ public class FileIntegrityJT extends javax.swing.JFrame {
 
         searchButton.setBackground(new java.awt.Color(107, 163, 190));
         searchButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        searchButton.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/Search.png")); // NOI18N
+        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Search.png"))); // NOI18N
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,7 +173,7 @@ public class FileIntegrityJT extends javax.swing.JFrame {
 
         backButton1.setBackground(new java.awt.Color(107, 163, 190));
         backButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        backButton1.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/back.png")); // NOI18N
+        backButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         backButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButton1ActionPerformed(evt);
