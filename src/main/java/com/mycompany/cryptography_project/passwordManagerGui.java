@@ -4,6 +4,7 @@
  */
 package com.mycompany.cryptography_project;
 
+import java.awt.CardLayout;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -65,6 +66,7 @@ public class passwordManagerGui extends javax.swing.JFrame {
     private void initComponents() {
 
         btnGroup1 = new javax.swing.ButtonGroup();
+        Container = new javax.swing.JPanel();
         mainPanel = new javax.swing.JPanel();
         passwordForJLabel = new javax.swing.JLabel();
         JTFpasswordFor = new javax.swing.JTextField();
@@ -80,20 +82,27 @@ public class passwordManagerGui extends javax.swing.JFrame {
         deleteBtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
         createMPasswordPanel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        masterPassTextArea = new javax.swing.JTextArea();
         createMPasswordLabel = new javax.swing.JLabel();
         masterPasswordTF = new javax.swing.JTextField();
-        addBtn = new javax.swing.JButton();
+        enterBtn = new javax.swing.JButton();
         ExitBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        masterPassTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 51, 0));
+        setBackground(new java.awt.Color(153, 255, 255));
         setName("mainContainer"); // NOI18N
+        addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                formComponentAdded(evt);
+            }
+        });
 
-        mainPanel.setBackground(new java.awt.Color(185, 200, 197));
+        Container.setLayout(new java.awt.CardLayout());
 
-        passwordForJLabel.setText("whats is the password for:");
+        mainPanel.setBackground(new java.awt.Color(192, 222, 255));
+
+        passwordForJLabel.setText("Password for:");
 
         JTFpasswordFor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,75 +175,73 @@ public class passwordManagerGui extends javax.swing.JFrame {
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(passwordForJLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(passwordJL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(passwordJL, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordForJLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JTFpasswordFor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JTFpassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(JTFpasswordFor, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(20, 20, 20)
                         .addComponent(addBtn2)
-                        .addGap(46, 46, 46)
-                        .addComponent(addRBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(JTFpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(deleteBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(listBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(listRBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(deleteRBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(logoutBtn)))
-                        .addGap(18, 18, 18))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114))
+                        .addComponent(listBtn))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addRBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(listRBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteRBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(logoutBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(passwordForJLabel)
-                            .addComponent(JTFpasswordFor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JTFpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passwordJL))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JTFpasswordFor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passwordForJLabel))
+                        .addGap(87, 87, 87)
+                        .addComponent(logoutBtn)
+                        .addGap(98, 98, 98))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(addRBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(listRBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deleteRBtn)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addBtn2)
-                            .addComponent(addRBtn))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordJL)
-                    .addComponent(JTFpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteBtn)
-                    .addComponent(listBtn)
-                    .addComponent(listRBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(deleteRBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(logoutBtn)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                            .addComponent(deleteBtn)
+                            .addComponent(listBtn))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(144, 144, 144))))
         );
 
-        createMPasswordPanel.setBackground(new java.awt.Color(204, 204, 204));
+        Container.add(mainPanel, "card2");
 
-        masterPassTextArea.setEditable(false);
-        masterPassTextArea.setColumns(20);
-        masterPassTextArea.setRows(5);
-        jScrollPane1.setViewportView(masterPassTextArea);
+        createMPasswordPanel.setBackground(new java.awt.Color(192, 222, 255));
 
         createMPasswordLabel.setText("ENTER MASTER PASSWORD");
 
@@ -244,10 +251,10 @@ public class passwordManagerGui extends javax.swing.JFrame {
             }
         });
 
-        addBtn.setText("Add");
-        addBtn.addActionListener(new java.awt.event.ActionListener() {
+        enterBtn.setText("Enter");
+        enterBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addBtnActionPerformed(evt);
+                enterBtnActionPerformed(evt);
             }
         });
 
@@ -258,61 +265,67 @@ public class passwordManagerGui extends javax.swing.JFrame {
             }
         });
 
+        masterPassTextArea.setEditable(false);
+        masterPassTextArea.setColumns(20);
+        masterPassTextArea.setRows(5);
+        jScrollPane1.setViewportView(masterPassTextArea);
+
         javax.swing.GroupLayout createMPasswordPanelLayout = new javax.swing.GroupLayout(createMPasswordPanel);
         createMPasswordPanel.setLayout(createMPasswordPanelLayout);
         createMPasswordPanelLayout.setHorizontalGroup(
             createMPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createMPasswordPanelLayout.createSequentialGroup()
-                .addGap(142, 142, 142)
                 .addGroup(createMPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(createMPasswordPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ExitBtn))
+                    .addGroup(createMPasswordPanelLayout.createSequentialGroup()
+                        .addGap(239, 239, 239)
+                        .addComponent(createMPasswordLabel)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(createMPasswordPanelLayout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addGroup(createMPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(createMPasswordPanelLayout.createSequentialGroup()
                         .addComponent(masterPasswordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addBtn)))
-                .addGap(0, 127, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createMPasswordPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(createMPasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(ExitBtn)
-                .addGap(34, 34, 34))
+                        .addComponent(enterBtn)))
+                .addGap(0, 149, Short.MAX_VALUE))
         );
         createMPasswordPanelLayout.setVerticalGroup(
             createMPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(createMPasswordPanelLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(createMPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(createMPasswordLabel)
-                    .addComponent(ExitBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(ExitBtn)
+                .addGap(21, 21, 21)
+                .addComponent(createMPasswordLabel)
+                .addGap(4, 4, 4)
                 .addGroup(createMPasswordPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(masterPasswordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                    .addComponent(enterBtn))
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(92, Short.MAX_VALUE))
         );
+
+        Container.add(createMPasswordPanel, "card3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(createMPasswordPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Container, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(createMPasswordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Container, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -350,14 +363,14 @@ public class passwordManagerGui extends javax.swing.JFrame {
      
     }//GEN-LAST:event_masterPasswordTFActionPerformed
 
-    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+    private void enterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterBtnActionPerformed
         try {
             // TODO add your handling code here:
             handleLogin();
         } catch (InvalidKeySpecException ex) {
             Logger.getLogger(passwordManagerGui.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_addBtnActionPerformed
+    }//GEN-LAST:event_enterBtnActionPerformed
 
     private void listRBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listRBtnActionPerformed
         // TODO add your handling code here:
@@ -378,6 +391,7 @@ public class passwordManagerGui extends javax.swing.JFrame {
         String password = JTFpassword.getText();   
         
         if((passwordFor.length()==0) || (password.length()==0)){
+            outputDisplay.append("");
             outputDisplay.append("both fields must be entered!");
             
         }else{
@@ -404,12 +418,13 @@ public class passwordManagerGui extends javax.swing.JFrame {
         }
     }
      
-     
+//making function to check if user already has files and if not its creates them   
 private void createPasswordFile() {
     try {
        
         File passwordFile = new File(PASSWORD_MANAGE_FILE);
         File encryptedFile = new File(passwordEncryptFile);
+        
         if (!passwordFile.exists()) {
           
             passwordFile.createNewFile();
@@ -459,8 +474,10 @@ private void createPasswordFile() {
                     }
                 } 
                 if(found){
+                    outputDisplay.append("");
                     outputDisplay.append("Password has been deleted! \n");
                 }else{
+                    outputDisplay.append("");
                     outputDisplay.append("Password wasnt found! \n");
                 }
           
@@ -502,7 +519,9 @@ private void createPasswordFile() {
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
         // TODO add your handling code here:
-        
+            //encrypting file when user logs out making passwords secure, if user doesnt press log out button file wont be
+            //encrypted which is a potential security concern
+          
              encryptFile();
             new Dashboard().setVisible(true);
              dispose();
@@ -513,11 +532,15 @@ private void createPasswordFile() {
         dispose();
         new Dashboard().setVisible(true);
     }//GEN-LAST:event_ExitBtnActionPerformed
+
+    private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formComponentAdded
     private void encryptFile(){
                     File inputFile = new File(PASSWORD_MANAGE_FILE); 
                     File outputFile = new File(passwordEncryptFile); 
 
-                    //getting the salt to generate a key from password
+                    //getting the salt to generate the mtaching key from password
                     try(BufferedReader reader = new BufferedReader(new FileReader(PASSWORD_FILE))){
                     String savedPassword = reader.readLine();
                     String[] parts = savedPassword.split(":");
@@ -551,10 +574,14 @@ private void createPasswordFile() {
             }
     }
     
+  
+    
     private void handleLogin() throws InvalidKeySpecException {
            masterPassword = masterPasswordTF.getText();
          
+           //prompting user to make a hard to guess password for added security
   if((masterPassword.length()<8)||(masterPassword.length()>20)){
+            masterPassTextArea.setText("");
             masterPassTextArea.append("Invalid password, between 8 - 20 characters");
         }else{
             if(passwordFileExists()){
@@ -562,6 +589,8 @@ private void createPasswordFile() {
                     if(passwordValidate(masterPassword)){
                         JOptionPane.showMessageDialog(this, "Login successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
                         showMainPanel();
+                        CardLayout cardLayout = (CardLayout) Container.getLayout();
+                        cardLayout.show(Container, "mainPanel");
 
                         try(BufferedReader reader = new BufferedReader(new FileReader(PASSWORD_FILE))){
                              
@@ -583,6 +612,8 @@ private void createPasswordFile() {
                     Logger.getLogger(passwordManagerGui.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }else{
+                //if password file does not exist it prompts the user to set this as there password as this is the first time 
+                //using the app
                 int result = JOptionPane.showConfirmDialog(this, "No password set. Do you want to set this password?", "Set Password", JOptionPane.YES_NO_OPTION);
                 if(result==JOptionPane.YES_OPTION){
                     try {
@@ -613,7 +644,7 @@ private void createPasswordFile() {
            e.printStackTrace();
         }   
     }
-    
+    //hashing the input password with the saved salt to see if they match
     private boolean passwordValidate(String inputPassword) throws NoSuchAlgorithmException, InvalidKeySpecException, Exception{
         try(BufferedReader reader = new BufferedReader(new FileReader(PASSWORD_FILE))){
             String savedPassword = reader.readLine();
@@ -674,10 +705,10 @@ private void createPasswordFile() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Container;
     private javax.swing.JButton ExitBtn;
     private javax.swing.JTextField JTFpassword;
     private javax.swing.JTextField JTFpasswordFor;
-    private javax.swing.JButton addBtn;
     private javax.swing.JButton addBtn2;
     private javax.swing.JRadioButton addRBtn;
     private javax.swing.ButtonGroup btnGroup1;
@@ -685,6 +716,7 @@ private void createPasswordFile() {
     private javax.swing.JPanel createMPasswordPanel;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JRadioButton deleteRBtn;
+    private javax.swing.JButton enterBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton listBtn;

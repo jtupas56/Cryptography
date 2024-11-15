@@ -34,6 +34,7 @@ import javax.crypto.spec.SecretKeySpec;
 public class passwordEncrypt {
 
     public static byte[] generateRandomSalt(int length){
+        //generating random salt to securely hash password
         byte[] salt = new byte[length];
         SecureRandom secureRandom = new SecureRandom();
         secureRandom.nextBytes(salt);
@@ -51,6 +52,7 @@ public class passwordEncrypt {
       
     
     public static IvParameterSpec generateIv(){
+        //generating random iv to ensure repeat passwords return different results
         byte[] iv = new byte[16];
         SecureRandom random = new SecureRandom();
         random.nextBytes(iv);
@@ -75,6 +77,7 @@ public class passwordEncrypt {
             
             outputStream.write(iv.getIV());
             
+            //printing iv at the start of the file so it can be retrived to allow for decryption
             byte[] buffer = new byte[64];
             int bytesRead;
             while((bytesRead =inputStream.read(buffer)) !=-1){
@@ -100,6 +103,7 @@ public class passwordEncrypt {
     try (FileInputStream inputStream = new FileInputStream(inputFile);
          FileOutputStream outputStream = new FileOutputStream(outputFile)) {
 
+        //getting the iv from the start of the file so you can succesfully decrypt
         byte[] ivBytes = new byte[16];
         int ivLength = inputStream.read(ivBytes);
         if (ivLength != 16) {
@@ -123,40 +127,5 @@ public class passwordEncrypt {
             outputStream.write(outputBytes);
         }
     }
+}       
 }
-       
-        
-}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
