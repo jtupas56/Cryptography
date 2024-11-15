@@ -5,9 +5,12 @@
 package com.mycompany.cryptography_project;
 
 import com.mycompany.cryptography_project.Records.RecordsSecurity;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 /**
@@ -25,13 +28,13 @@ public class records extends javax.swing.JFrame
     {
         try 
         {
+            //data retrival handled on seperate file
             recordsData = RecordsSecurity.retrieveData();
             setTableColumns();
             initComponents();
             setTableRows();
             disableTableEditing();
-
-
+            setClosingOperation();
         }
         catch (IOException e)
         {
@@ -43,9 +46,30 @@ public class records extends javax.swing.JFrame
         }
     }
     
+    //changes the default closing opperation of the frame
+    //this method is implemented because netbeans gui is an absolute pain to deal with
+    private void setClosingOperation()
+    {
+        //overrides default closing operation so that the frame wont close
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        
+        //sets new functionality for closing operation
+        addWindowListener(new WindowAdapter() 
+        {
+            @Override
+            public void windowClosing(WindowEvent e) 
+            {
+                //user is returned to dashboard
+                setVisible(false);
+                new Dashboard().setVisible(true);
+                dispose();
+            }
+        });
+    }
+    
+    //prevents user from tampering with the table
     private void disableTableEditing()
     {
-
         for (int i = 0; i < recordsTable.getColumnCount(); i++) 
         {
             TableColumn column = recordsTable.getColumnModel().getColumn(i);
@@ -60,30 +84,38 @@ public class records extends javax.swing.JFrame
     }
     
 
-    
+    //sets column names
     private void setTableColumns() throws IOException
     {
+        //gets field names from json file
         ArrayList<String[]> innerData = recordsData.get(0);
+        //sets number of columns
         columns = new String[innerData.size()];
-        
+        //sets names
         for (int i = 0; i < innerData.size(); i++)
         {
             columns[i] = innerData.get(i)[0];
         }
+        //note: this column is added via custom code feature in JTable
     }
     
+    //displays the data in the table
     private void setTableRows()
     {
+        //data must be changed via table model
         DefaultTableModel model = (DefaultTableModel) recordsTable.getModel();
         
+        //loops through each patient (each row of data in the json)
         for (ArrayList<String[]> patientInfo : recordsData)
         {
             Object[] newRow = new Object[patientInfo.size()];
             
             for (int i = 0; i < patientInfo.size(); i++)
             {
+                //gets field values
                 newRow[i] = patientInfo.get(i)[1];
             }
+            //adds new row data to table
             model.addRow(newRow);
         }
     }
@@ -95,7 +127,8 @@ public class records extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         recordsTable = new javax.swing.JTable();
