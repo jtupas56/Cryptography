@@ -17,7 +17,7 @@ public class FileReadWrite
         outputStream.flush();
     }
 
-    //reads file
+    //reads bytes from file
     public static byte[] readFromFile(String fileName) throws IOException
     {
         FileInputStream inputStream = new FileInputStream(fileName);
