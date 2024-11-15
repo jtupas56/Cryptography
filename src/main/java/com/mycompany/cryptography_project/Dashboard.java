@@ -34,7 +34,7 @@ public class Dashboard extends javax.swing.JFrame {
         exitToLoginPageBtn = new javax.swing.JButton();
         joshProjectSectionBtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -67,7 +67,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         exitToLoginPageBtn.setBackground(new java.awt.Color(107, 163, 190));
         exitToLoginPageBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        exitToLoginPageBtn.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/Logout.png")); // NOI18N
+        exitToLoginPageBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logout.png"))); // NOI18N
         exitToLoginPageBtn.setText("Logout");
         exitToLoginPageBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,8 +96,8 @@ public class Dashboard extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 190, 60));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/header.jpeg")); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 590, 360));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/header.jpeg"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 590, 360));
 
         jTabbedPane1.addTab("Dashboard", jPanel1);
 
@@ -192,7 +192,7 @@ public class Dashboard extends javax.swing.JFrame {
         });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 306, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/image (1).png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/image (1).png"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 390, 320));
 
         jTabbedPane1.addTab("Feedback", jPanel2);
@@ -362,7 +362,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
