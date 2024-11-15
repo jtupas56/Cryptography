@@ -1,0 +1,21 @@
+use one the following to log in
+
+1.
+  id: "ADAM123"
+  password: "321adam"
+
+2.
+  id: "AARON234"
+  password: "432aaron"
+
+3.
+  id: "DOM345"
+  password: "543dom"
+
+4.
+  id: "JOSH456"
+  password: "654josh"
+
+5.
+  id: "12ADMIN34"
+  password: "43admin21"
