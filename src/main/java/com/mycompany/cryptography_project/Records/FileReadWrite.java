@@ -9,53 +9,20 @@ import java.io.IOException;
 
 public class FileReadWrite 
 {
-    
-    /* public static void main(String[] args) {
-        String fileName = "output.txt";
-        String content = "Hello, this is a sample text written to the file!";
-
-        writeToFile(fileName, content);
-        readFromFile(fileName);
-    } */
-
-//    public static void writeToFile(String fileName, String content) throws IOException
-//    {
-//        FileWriter writer = new FileWriter(fileName);
-//
-//        writer.write(content);
-//        writer.flush();
-//    }
-//
-//    public static String readFromFile(String fileName) throws IOException
-//    {
-//        FileReader reader = new FileReader(fileName);
-//        BufferedReader bufferedReader = new BufferedReader(reader);
-//
-//        String line;
-//        String output = "";
-//        while ((line = bufferedReader.readLine()) != null) 
-//        {
-//            output += line + "\r\n";
-//        }
-//
-//        return output;
-//    }
-    
-        public static void writeToFile(String fileName, byte[] content) throws IOException
-        {
+    //creates file using bytes to avoid any compression issue (maintain byte length)
+    public static void writeToFile(String fileName, byte[] content) throws IOException
+    {
         FileOutputStream outputStream = new FileOutputStream(fileName);
         outputStream.write(content);
         outputStream.flush();
-
-
     }
 
+    //reads bytes from file
     public static byte[] readFromFile(String fileName) throws IOException
     {
         FileInputStream inputStream = new FileInputStream(fileName);
         byte[] data = inputStream.readAllBytes();
         return data;
-
     }
 }
 

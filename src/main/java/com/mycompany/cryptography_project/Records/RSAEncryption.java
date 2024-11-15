@@ -25,6 +25,7 @@ public class RSAEncryption
         init();
     }
 
+    //instatiated class used for decrypting purposes only with set private key
     public RSAEncryption(String privateKey) throws Exception
     {
         setPrivateKey(privateKey);
@@ -32,17 +33,7 @@ public class RSAEncryption
         decryptionOnly = true;
     }
 
-    /* public static void main(String args[]) throws Exception {
-        init();
-        String jsonString = JSONReader.readJsonFromFile("patient_medical_records.json");
-        System.out.println(jsonString);
-        /*
-         * jsonString = jsonString.replaceAll(" ", "?");
-         * ArrayList<byte[]> encryptedData = encryptList(longStringToList(jsonString));
-         * ArrayList<String> decryptedData = decryptList(encryptedData);
-         * System.out.println(decryptedData.get(0).replaceAll("\\?", " "));
-         *
-    } */
+    //generates keys and cipher
     private void init() throws Exception
     {
         KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
@@ -62,6 +53,8 @@ public class RSAEncryption
 
     public byte[] encryptData(String jsonData) throws Exception
     {
+        //fail safe to prevent improper use of class
+        //this satement can be ignored if code is unchanged
         if (decryptionOnly)
         {
             throw new Exception("Class initialised using private key is for decryption purposed only, use default initialisation instead for encryption");
@@ -75,26 +68,22 @@ public class RSAEncryption
 
         // encrypting the data
         byte[] cipherText = cipher.doFinal();
-        // System.out.println(new String(cipherText, "UTF8"));
 
-        // Initializing the same cipher for decryption
-        // cipher.init(Cipher.DECRYPT_MODE, privateKey);
-        // Decrypting the text
-        // byte[] decipheredText = cipher.doFinal(cipherText);
-        return (cipherText);
+        return cipherText;
     }
 
     public String decryptData(byte[] encryptedData) throws Exception
     {
-
         // Initializing the same cipher for decryption
         cipher.init(Cipher.DECRYPT_MODE, privateKey);
 
         // Decrypting the text
         byte[] decipheredText = cipher.doFinal(encryptedData);
+        
         return new String(decipheredText);
     }
 
+    //encrypts a list of data
     public ArrayList<byte[]> encryptList(ArrayList<String> list) throws Exception
     {
         ArrayList<byte[]> encryptedList = new ArrayList<>();
@@ -107,6 +96,7 @@ public class RSAEncryption
         return encryptedList;
     }
 
+    //decrypts a list of data
     public ArrayList<String> decryptList(ArrayList<byte[]> encryptedList) throws Exception
     {
         ArrayList<String> decryptedList = new ArrayList<>();
@@ -119,11 +109,15 @@ public class RSAEncryption
         return decryptedList;
     }
     
+    //default method if second argument left empty
     public ArrayList<String> longStringToList(String data)
     {
         return longStringToList(data, false);
     }
 
+    //there is a byte limit for encryption and decryption, so this method splits the string into a list
+    //encytion has 245 byte limit
+    //decryption has 256 byte limit
     public ArrayList<String> longStringToList(String data, boolean isEncryptedData)
     {
         int maxBytes = 245;
@@ -136,8 +130,10 @@ public class RSAEncryption
 
         String currentString = "";
         int bytesUsed = 0;
+        //loops through each character in the string
         for (int charIndex = 0; charIndex < data.length(); charIndex++)
         {
+            //if the string has reached the max byte length, then it is added to the list
             if (bytesUsed >= maxBytes)
             {
                 list.add(currentString);
@@ -145,13 +141,21 @@ public class RSAEncryption
                 bytesUsed = 0;
             }
 
+            //adds character to new string
             currentString += Character.toString(data.charAt(charIndex));
+            //updates number of bytes used by string
+            //StandardCharsets.ISO_8859_1 is an encoding method that prevents byte changes in conversion
+            /*
+            * if default encoding and decoding is used, there will be an inconsistancy in bytes because of how special symbols
+            * are converted into bytes and vise versa
+            */
             bytesUsed = currentString.getBytes(StandardCharsets.ISO_8859_1).length;
         }
         list.add(currentString);
         return list;
     }
 
+    //converts list to a single string, used for stoing data into a file
     public String listToLongString(ArrayList<String> list)
     {
         String output = "";
@@ -162,12 +166,14 @@ public class RSAEncryption
         return output;
     }
 
+    //returns string version of private key for storage
     public String getPrivateKey()
     {
         // Encode the private key's bytes to Base64
         return Base64.getEncoder().encodeToString(privateKey.getEncoded());
     }
 
+    //converts private key string into correct data type and stores it in global variable
     private void setPrivateKey(String keyString) throws Exception
     {
         // Decode the Base64 string to get private key bytes
@@ -179,24 +185,29 @@ public class RSAEncryption
         privateKey = keyFactory.generatePrivate(keySpec);
     }
 
+    //converts list of bytes into a single string
     public String byteListToString(ArrayList<byte[]> encryptedList)
     {
         String output = "";
 
         for (byte[] value : encryptedList)
         {
+            //converts bytes to string
+            //see line 147 for encoding/decoding info
             output += new String(value, StandardCharsets.ISO_8859_1);
         }
 
         return output;
     }
 
+    //converts values in list from string to bytes
     public ArrayList<byte[]> listToByteList(ArrayList<String> list) throws Exception
     {
         ArrayList<byte[]> byteList = new ArrayList<>();
 
         for (String value : list)
         {
+            //see line 147 for encoding/decoding info
             byteList.add(value.getBytes(StandardCharsets.ISO_8859_1));
         }
 
