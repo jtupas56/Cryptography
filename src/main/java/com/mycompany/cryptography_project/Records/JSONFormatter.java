@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class JSONFormatter 
 {
 
+    //since java does not have a built-in class for handling json, I have
     public static ArrayList<ArrayList<String[]>> parseList(String data)
     {
-        
         data = data.replaceAll("\\[\n    \\{", "");
         data = data.replaceAll("    \\}\n\\]", "");
         data = data.replaceAll("        ", "");
