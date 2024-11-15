@@ -1,4 +1,4 @@
-# Security fundementals Group project
+# Security Fundementals Group project
 
 1. Download ZIP
 2. Extract to folder
