@@ -4,6 +4,8 @@
  */
 package com.mycompany.cryptography_project;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author joshuatupas
@@ -32,44 +34,168 @@ public class Dashboard extends javax.swing.JFrame {
         exitToLoginPageBtn = new javax.swing.JButton();
         joshProjectSectionBtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField10 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel16 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(192, 222, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        DomasProjectSectionBtn.setBackground(new java.awt.Color(107, 163, 190));
+        DomasProjectSectionBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         DomasProjectSectionBtn.setText("Patients Records");
         DomasProjectSectionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DomasProjectSectionBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(DomasProjectSectionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
+        jPanel1.add(DomasProjectSectionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 190, 60));
 
-        exitToLoginPageBtn.setText("Exit to Login Page");
+        exitToLoginPageBtn.setBackground(new java.awt.Color(107, 163, 190));
+        exitToLoginPageBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        exitToLoginPageBtn.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/Logout.png")); // NOI18N
+        exitToLoginPageBtn.setText("Logout");
         exitToLoginPageBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitToLoginPageBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(exitToLoginPageBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
+        jPanel1.add(exitToLoginPageBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 190, -1));
 
+        joshProjectSectionBtn.setBackground(new java.awt.Color(107, 163, 190));
+        joshProjectSectionBtn.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         joshProjectSectionBtn.setText("File Verification");
         joshProjectSectionBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 joshProjectSectionBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(joshProjectSectionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+        jPanel1.add(joshProjectSectionBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 190, 60));
 
+        jButton1.setBackground(new java.awt.Color(107, 163, 190));
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jButton1.setText("Password Management");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 190, 60));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/header.jpeg")); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 590, 360));
 
         jTabbedPane1.addTab("Dashboard", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(192, 222, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 14)); // NOI18N
+        jLabel9.setText("Forename:");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 26, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 14)); // NOI18N
+        jLabel13.setText("Surname:");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 26, -1, -1));
+
+        jTextField8.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
+        jTextField8.setToolTipText("Enter your first name!");
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField8KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField8KeyTyped(evt);
+            }
+        });
+        jPanel2.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 49, 163, -1));
+
+        jTextField7.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
+        jTextField7.setToolTipText("Enter your last name!");
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField7KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField7KeyTyped(evt);
+            }
+        });
+        jPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 49, 163, -1));
+
+        jTextField10.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
+        jTextField10.setToolTipText("Enter your address!");
+        jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField10KeyPressed(evt);
+            }
+        });
+        jPanel2.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 123, 163, -1));
+
+        jTextField9.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
+        jTextField9.setToolTipText("Enter your email!");
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField9KeyPressed(evt);
+            }
+        });
+        jPanel2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 123, 163, -1));
+
+        jLabel14.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 14)); // NOI18N
+        jLabel14.setText("Email:");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 100, -1, -1));
+
+        jLabel17.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 14)); // NOI18N
+        jLabel17.setText("Address:");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
+        jTextArea1.setRows(5);
+        jTextArea1.setToolTipText("Type your message here!");
+        jTextArea1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextArea1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextArea1KeyTyped(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jTextArea1);
+
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 191, 332, 109));
+
+        jLabel16.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 14)); // NOI18N
+        jLabel16.setText("Message:");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 168, -1, -1));
+
+        jButton2.setBackground(new java.awt.Color(107, 163, 190));
+        jButton2.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 18)); // NOI18N
+        jButton2.setText("Submit Form");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 306, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/image (1).png")); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 390, 320));
+
+        jTabbedPane1.addTab("Feedback", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,7 +205,7 @@ public class Dashboard extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -92,8 +218,11 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_DomasProjectSectionBtnActionPerformed
 
     private void exitToLoginPageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitToLoginPageBtnActionPerformed
-        this.dispose();
-        new Login().setVisible(true);
+        int x = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to logout?");
+        if (x == 0) {
+            new Login().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_exitToLoginPageBtnActionPerformed
 
     private void joshProjectSectionBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joshProjectSectionBtnActionPerformed
@@ -105,6 +234,88 @@ public class Dashboard extends javax.swing.JFrame {
         this.dispose();
         new passwordManagerGui().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyPressed
+        int dialog = jTextField8.getText().length();
+        
+        if (dialog == 20) {
+            JOptionPane.showMessageDialog(rootPane, "You cannot type more than 20 letters");
+            jTextField8.setText(null);
+        }
+    }//GEN-LAST:event_jTextField8KeyPressed
+
+    private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
+        char copy = evt.getKeyChar();
+        
+        if (!Character.isLetter(copy)) {
+            
+            evt.consume();
+            
+        }
+    }//GEN-LAST:event_jTextField8KeyTyped
+
+    private void jTextField7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyPressed
+        int dialog = jTextField7.getText().length();
+        
+        if (dialog == 20) {
+            JOptionPane.showMessageDialog(rootPane, "You cannot type more than 20 letters");
+            jTextField7.setText(null);
+        }
+    }//GEN-LAST:event_jTextField7KeyPressed
+
+    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
+        char copy = evt.getKeyChar();
+        
+        if (!Character.isLetter(copy)) {
+            
+            evt.consume();
+            
+        }
+    }//GEN-LAST:event_jTextField7KeyTyped
+
+    private void jTextField10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyPressed
+        int dialog = jTextField10.getText().length();
+        
+        if (dialog == 20) {
+            JOptionPane.showMessageDialog(rootPane, "You cannot type more than 20 characters!");
+            jTextField10.setText(null);
+        }
+    }//GEN-LAST:event_jTextField10KeyPressed
+
+    private void jTextField9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyPressed
+        int dialog = jTextField9.getText().length();
+        
+        if (dialog == 20) {
+            JOptionPane.showMessageDialog(rootPane, "You cannot type more than 20 characters!");
+            jTextField9.setText(null);
+        }
+    }//GEN-LAST:event_jTextField9KeyPressed
+
+    private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
+        int dialog = jTextArea1.getText().length();
+        
+        if (dialog == 200) {
+            JOptionPane.showMessageDialog(rootPane, "You cannot type more than 200 characters!");
+            jTextArea1.setText(null);
+        }
+    }//GEN-LAST:event_jTextArea1KeyPressed
+
+    private void jTextArea1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyTyped
+        jTextArea1.setLineWrap(true);
+    }//GEN-LAST:event_jTextArea1KeyTyped
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (jTextArea1.getText().equals("") || jTextField8.getText().equals("") || jTextField7.getText().equals("") || jTextField9.getText().equals("") || jTextField10.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Please fill in all the text boxes, Thank you!");
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Thank you for contacting us!, We will respond within 10 days!");
+            jTextArea1.setText("");
+            jTextField8.setText("");
+            jTextField7.setText("");
+            jTextField9.setText("");
+            jTextField10.setText("");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,8 +356,23 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton DomasProjectSectionBtn;
     private javax.swing.JButton exitToLoginPageBtn;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    public static javax.swing.JTextArea jTextArea1;
+    public static javax.swing.JTextField jTextField10;
+    public static javax.swing.JTextField jTextField7;
+    public static javax.swing.JTextField jTextField8;
+    public static javax.swing.JTextField jTextField9;
     private javax.swing.JButton joshProjectSectionBtn;
     // End of variables declaration//GEN-END:variables
 }

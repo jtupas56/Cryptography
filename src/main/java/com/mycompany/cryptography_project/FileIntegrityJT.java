@@ -4,9 +4,6 @@
  */
 package com.mycompany.cryptography_project;
 
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
 import java.io.File;
 import java.nio.file.Files;
 import java.security.MessageDigest;
@@ -22,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FileIntegrityJT extends javax.swing.JFrame {
 
-    private File selectedFile;
+    File selectedFile;
 
     /**
      * Creates new form FileIntegrity
@@ -48,22 +45,25 @@ public class FileIntegrityJT extends javax.swing.JFrame {
         hashButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         hashTF = new javax.swing.JTextField();
-        verifyButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        verifyButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         hashrecordsTable = new javax.swing.JTable();
         searchButton = new javax.swing.JButton();
         enterFileName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        backButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(39, 77, 96));
+        jPanel1.setBackground(new java.awt.Color(192, 222, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         fileButton.setBackground(new java.awt.Color(107, 163, 190));
         fileButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        fileButton.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/Purchase.png")); // NOI18N
         fileButton.setText("Choose File");
         fileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,8 +77,8 @@ public class FileIntegrityJT extends javax.swing.JFrame {
         jPanel1.add(fileNameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, -1));
 
         hashButton.setBackground(new java.awt.Color(107, 163, 190));
-        hashButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        hashButton.setText("Calculate Hash");
+        hashButton.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
+        hashButton.setText("SHA-256");
         hashButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hashButtonActionPerformed(evt);
@@ -93,24 +93,35 @@ public class FileIntegrityJT extends javax.swing.JFrame {
         hashTF.setToolTipText("Copy the hash here");
         jPanel1.add(hashTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 660, 40));
 
-        verifyButton.setBackground(new java.awt.Color(107, 163, 190));
-        verifyButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        verifyButton.setText("Check File");
-        verifyButton.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setBackground(new java.awt.Color(107, 163, 190));
+        backButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        backButton.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/back.png")); // NOI18N
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verifyButtonActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(verifyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 300, -1, 60));
+        jPanel1.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 80, 60));
 
         jLabel2.setBackground(new java.awt.Color(255, 0, 51));
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel2.setText("File Verification");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 150, 40));
 
+        verifyButton.setBackground(new java.awt.Color(107, 163, 190));
+        verifyButton.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        verifyButton.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/Edit.png")); // NOI18N
+        verifyButton.setText("Check File");
+        verifyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verifyButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(verifyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, -1, 60));
+
         jTabbedPane1.addTab("Hash", jPanel1);
 
-        jPanel3.setBackground(new java.awt.Color(39, 77, 96));
+        jPanel3.setBackground(new java.awt.Color(192, 222, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         hashrecordsTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -160,6 +171,16 @@ public class FileIntegrityJT extends javax.swing.JFrame {
         jLabel3.setText("Search File Name:");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, -1, -1));
 
+        backButton1.setBackground(new java.awt.Color(107, 163, 190));
+        backButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        backButton1.setIcon(new javax.swing.ImageIcon("/Users/joshuatupas/NetBeansProjects/Cryptography_Project/src/main/java/com/mycompany/cryptography_project/images/back.png")); // NOI18N
+        backButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(backButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 80, 60));
+
         jTabbedPane1.addTab("Records", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -176,11 +197,56 @@ public class FileIntegrityJT extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        new Dashboard().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void hashButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hashButtonActionPerformed
+        try {
+            // MessageDigest class for SHA-256
+            byte[] encodedHash = messageDigest();
+            String hashValue = bytesToHex(encodedHash);
+            hashTF.setText(hashValue);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Please select file");
+        }
+    }//GEN-LAST:event_hashButtonActionPerformed
+
+    private void fileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileButtonActionPerformed
+        JFileChooser fs = new JFileChooser();
+        fs.setDialogTitle("Select a File");
+
+        int rs = fs.showOpenDialog(this);
+
+        if (rs == JFileChooser.APPROVE_OPTION) {
+            selectedFile = fs.getSelectedFile();
+            String fn = selectedFile.getName();
+            fileNameTF.setText(fn);
+        }
+    }//GEN-LAST:event_fileButtonActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        String sf = enterFileName.getText().trim();
+        if (sf.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Please enter a file name to search");
+        } else {
+            // if the filename is entered, the row is highlighted
+            for (int i = 0; i < hashrecordsTable.getRowCount(); i++) {
+                String fn = hashrecordsTable.getValueAt(i, 1).toString();
+                if (fn.equalsIgnoreCase(sf)) {
+                    hashrecordsTable.setRowSelectionInterval(i, i);
+                    break;
+                }
+            }
+        }
+    }//GEN-LAST:event_searchButtonActionPerformed
+
     private void verifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyButtonActionPerformed
         try {
-            String verifyHash = hashTF.getText();
+            String vh = hashTF.getText();
             //if the input is empty otherwise verify when the file and hash matches
-            if (verifyHash.isEmpty()) {
+            if (vh.isEmpty()) {
                 JOptionPane.showMessageDialog(rootPane, "Please provide a hash first");
             } else {
                 if (selectedFile != null && selectedFile.exists()) {
@@ -189,18 +255,17 @@ public class FileIntegrityJT extends javax.swing.JFrame {
                     String timestamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
 
                     //to avoid duplicate hash record
-                    DefaultTableModel model = (DefaultTableModel) hashrecordsTable.getModel();
-                    boolean isDuplicate = false;
-                    for (int i = 0; i < model.getRowCount(); i++) {
-                        if (model.getValueAt(i, 2) != null && model.getValueAt(i, 2).equals(currentHash)) {
-                            isDuplicate = true;
+                    boolean match = false;
+                    for (int i = 0; i < hashrecordsTable.getRowCount(); i++) {
+                        if (currentHash.equals(hashrecordsTable.getValueAt(i, 2))) {
+                            match = true;
                             break;
                         }
                     }
-                    if (isDuplicate) {
+                    if (match) {
                         JOptionPane.showMessageDialog(rootPane, "This hash has already been verified!");
                     } else {//add hash record when verification successful
-                        if (verifyHash.equals(currentHash)) {
+                        if (vh.equals(currentHash)) {
                             DefaultTableModel tableModel = (DefaultTableModel) hashrecordsTable.getModel();
                             tableModel.addRow(new Object[]{
                                 timestamp,
@@ -221,45 +286,10 @@ public class FileIntegrityJT extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_verifyButtonActionPerformed
 
-    private void hashButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hashButtonActionPerformed
-        try {
-            // MessageDigest class for SHA-256
-            byte[] encodedHash = messageDigest();
-            String hashValue = bytesToHex(encodedHash);
-            hashTF.setText(hashValue);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, "Please select file");
-        }
-    }//GEN-LAST:event_hashButtonActionPerformed
-
-    private void fileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileButtonActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Select a File");
-
-        int result = fileChooser.showOpenDialog(this);
-
-        if (result == JFileChooser.APPROVE_OPTION) {
-            selectedFile = fileChooser.getSelectedFile();
-            String fileName = selectedFile.getName();
-            fileNameTF.setText(fileName);
-        }
-    }//GEN-LAST:event_fileButtonActionPerformed
-
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        String searchFile = enterFileName.getText().trim();
-        if (searchFile.isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Please enter a file name to search");
-        } else {
-
-            for (int i = 0; i < hashrecordsTable.getRowCount(); i++) {
-                String fileName = hashrecordsTable.getValueAt(i, 1).toString(); // Column 1 is File name
-                if (fileName.equalsIgnoreCase(searchFile)) {
-                    hashrecordsTable.setRowSelectionInterval(i, i); // Highlight the matching row
-                    break;
-                }
-            }
-        }
-    }//GEN-LAST:event_searchButtonActionPerformed
+    private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
+        new Dashboard().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backButton1ActionPerformed
 
     //byte to hex converter to get the hashed value
     private static String bytesToHex(byte[] hash) {
@@ -318,12 +348,14 @@ public class FileIntegrityJT extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton backButton;
+    public static javax.swing.JButton backButton1;
     private javax.swing.JTextField enterFileName;
-    private javax.swing.JButton fileButton;
-    private javax.swing.JLabel fileNameTF;
-    private javax.swing.JButton hashButton;
+    public static javax.swing.JButton fileButton;
+    public static javax.swing.JLabel fileNameTF;
+    public static javax.swing.JButton hashButton;
     private javax.swing.JTextField hashTF;
-    private javax.swing.JTable hashrecordsTable;
+    public static javax.swing.JTable hashrecordsTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -331,7 +363,7 @@ public class FileIntegrityJT extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JButton searchButton;
-    private javax.swing.JButton verifyButton;
+    public static javax.swing.JButton searchButton;
+    public static javax.swing.JButton verifyButton;
     // End of variables declaration//GEN-END:variables
 }
